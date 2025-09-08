@@ -14,6 +14,11 @@ module "networking" {
       name       = "private-subnet-1"
       cidr_block = var.subnet-2_cidr_block
       public     = false
+    },
+    {
+      name       = "migration-subnet"
+      cidr_block = var.subnet-3_cidr_block
+      public     = true
     }
   ]
 
