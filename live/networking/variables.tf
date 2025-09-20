@@ -32,46 +32,60 @@ variable "env" {
   }
 }
 
-variable "vpc_cidr_block" {
-  description = "CIDR block for the VPC"
-  type        = string
-  # default     = "10.0.0.0/16"
+# variable "vpc_cidr_block" {
+#   description = "CIDR block for the VPC"
+#   type        = string
+#   # default     = "10.0.0.0/16"
 
-  validation {
-    condition     = can(cidrhost(var.vpc_cidr_block, 0))
-    error_message = "Invalid value. The value must be a valid IPv4 CIDR block, like 10.0.0.0/16"
-  }
-}
+#   validation {
+#     condition     = can(cidrhost(var.vpc_cidr_block, 0))
+#     error_message = "Invalid value. The value must be a valid IPv4 CIDR block, like 10.0.0.0/16"
+#   }
+# }
 
-variable "subnet-1_cidr_block" {
-  description = "CIDR block for the first subnet"
-  type        = string
-  # default     = "10.0.0.0/24"
+# variable "subnet-1_cidr_block" {
+#   description = "CIDR block for the first subnet"
+#   type        = string
+#   # default     = "10.0.0.0/24"
 
-  validation {
-    condition     = can(cidrhost(var.subnet-1_cidr_block, 0))
-    error_message = "Invalid value. The value must be a valid IPv4 CIDR block, like 10.0.0.0/24"
-  }
-}
+#   validation {
+#     condition     = can(cidrhost(var.subnet-1_cidr_block, 0))
+#     error_message = "Invalid value. The value must be a valid IPv4 CIDR block, like 10.0.0.0/24"
+#   }
+# }
 
-variable "subnet-2_cidr_block" {
-  description = "CIDR block for the second subnet"
-  type        = string
-  # default     = "10.0.0.0/24"
+# variable "subnet-2_cidr_block" {
+#   description = "CIDR block for the second subnet"
+#   type        = string
+#   # default     = "10.0.0.0/24"
 
-  validation {
-    condition     = can(cidrhost(var.subnet-2_cidr_block, 0))
-    error_message = "Invalid value. The value must be a valid IPv4 CIDR block, like 10.0.0.0/24"
-  }
-}
+#   validation {
+#     condition     = can(cidrhost(var.subnet-2_cidr_block, 0))
+#     error_message = "Invalid value. The value must be a valid IPv4 CIDR block, like 10.0.0.0/24"
+#   }
+# }
 
-variable "subnet-3_cidr_block" {
-  description = "CIDR block for the third subnet"
-  type        = string
-  # default     = "10.0.0.0/24"
+# variable "subnet-3_cidr_block" {
+#   description = "CIDR block for the third subnet"
+#   type        = string
+#   # default     = "10.0.0.0/24"
 
-  validation {
-    condition     = can(cidrhost(var.subnet-3_cidr_block, 0))
-    error_message = "Invalid value. The value must be a valid IPv4 CIDR block, like 10.0.0.0/24"
-  }
+#   validation {
+#     condition     = can(cidrhost(var.subnet-3_cidr_block, 0))
+#     error_message = "Invalid value. The value must be a valid IPv4 CIDR block, like 10.0.0.0/24"
+#   }
+# }
+
+variable "vpc_definitions" {
+  type = map(object({
+    cidr_block = string
+    public_subnets = map(object({
+      cidr_block        = string
+      availability_zone = string
+    }))
+    private_subnets = map(object({
+      cidr_block        = string
+      availability_zone = string
+    }))
+  }))
 }
