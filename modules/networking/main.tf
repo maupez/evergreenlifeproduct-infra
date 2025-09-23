@@ -31,8 +31,11 @@ resource "aws_eip" "nat" {
 }
 
 resource "aws_nat_gateway" "nat" {
+  depends_on = [ aws_subnet.subnets ]
+
   allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.subnets["public-subnet-1"].id
+  # Create the NAT Gateway only in the first public subnet defined
+  subnet_id     = aws_subnet.subnets[[for subnet in var.subnet_cidr_blocks : subnet.name if subnet.public][0]].id
 
   tags = merge(var.tags, {
     Name        = "${var.env}-natgw"
