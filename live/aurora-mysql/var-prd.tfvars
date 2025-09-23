@@ -1,0 +1,11 @@
+aws_region = "eu-south-1"
+environment = "Production"
+env = "prd"
+project = "EvergreenLifeProduct"
+# Aurora MySQL
+db_cluster_identifier = "evergreenlifeproduct-prd-aurora-cluster"
+db_instance_identifier = "evergreenlifeproduct-prd-aurora-instance"
+db_username = "admin"
+db_password = "password"
+db_name = "evergreenlifeproduct"
+db_port = 3306
