@@ -1,8 +1,17 @@
 2025 09 17
 
-+ nuova vpc con 2 subnet (private-data e public) per db e openvpn client endpoint
+[sospeso: create subnet che non fanno overlapping!] nuova vpc con 2 subnet (private-data e public) per db e openvpn client endpoint
  (non posso usare la stessa altrimenti c'è overlapping per la vpn! poi sposto le vm da una vpc all'altra sharando l'immagine)
 
 + nuova ec2 linux con openvpn client 
 + nuovo rds aurora serverless vuoto (tabelle e dati saranno da importare successivamente)
 + rotte per andare dalla vpc all'account extrared via vpn client 
+
+
+2025 09 24
++ aggiungere data blocks per subnet e vpc alla live di aurora (vedi copilot)
++ farsi dare info da pacifici sul db (versione, master user, db name default, ecc)
++ nuovo rds aurora serverless vuoto (tabelle e dati saranno da importare successivamente)
++ nuova ec2 linux con openvpn client
++ rotte per andare dalla vpc all'account extrared via vpn client 
+
