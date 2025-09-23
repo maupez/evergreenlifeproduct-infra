@@ -4,23 +4,25 @@ module "networking" {
   source         = "../../modules/networking"
   vpc_cidr_block = var.vpc_cidr_block
 
-  subnet_cidr_blocks = [
-    {
-      name       = "public-subnet-1"
-      cidr_block = var.subnet-1_cidr_block
-      public     = true
-    },
-    {
-      name       = "private-subnet-1"
-      cidr_block = var.subnet-2_cidr_block
-      public     = false
-    },
-    {
-      name       = "migration-subnet"
-      cidr_block = var.subnet-3_cidr_block
-      public     = true
-    }
-  ]
+  # subnet_cidr_blocks = [
+  #   {
+  #     name       = "public-subnet-1"
+  #     cidr_block = var.subnet-1_cidr_block
+  #     public     = true
+  #   },
+  #   {
+  #     name       = "private-subnet-1"
+  #     cidr_block = var.subnet-2_cidr_block
+  #     public     = false
+  #   },
+  #   {
+  #     name       = "migration-subnet"
+  #     cidr_block = var.subnet-3_cidr_block
+  #     public     = true
+  #   }
+  # ]
+
+  subnet_cidr_blocks = var.subnet_cidr_blocks
 
   tags = {
     Environment = var.environment
