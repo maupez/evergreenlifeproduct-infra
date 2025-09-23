@@ -52,10 +52,6 @@ variable "subnet_ids" {
   type = list(string)
 }
 
-variable "vpc_security_group_ids" {
-  type = list(string)
-}
-
 variable "database_name" {
   description = "The name of the default database to create"
   type        = string

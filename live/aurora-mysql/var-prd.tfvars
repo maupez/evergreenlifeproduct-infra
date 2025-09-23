@@ -3,9 +3,11 @@ environment = "Production"
 env = "prd"
 project = "EvergreenLifeProduct"
 # Aurora MySQL
-db_cluster_identifier = "evergreenlifeproduct-prd-aurora-cluster"
-db_instance_identifier = "evergreenlifeproduct-prd-aurora-instance"
-db_username = "admin"
-db_password = "password"
-db_name = "evergreenlifeproduct"
-db_port = 3306
+cluster_name = "evergreenlifeproduct"
+engine_version = "8.0.mysql_aurora.3.04.0"
+instance_type = "db.r6g.small"
+subnet_ids = []
+master_username = "admin"
+master_password = "password"
+database_name = "evergreenlifeproduct"
+
