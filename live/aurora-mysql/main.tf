@@ -1,14 +1,25 @@
+locals {
+  # vpc name 
+  vpc_name = "${var.env}-vpc"
+  # cidr blocks of the subnets that need access to the database
+  be_subnet_cidrs = [
+    for subnet in data.aws_subnet.be_cidr_map :
+    subnet.value.cidr_block
+  ]
+
+}
+
 # retrieve the VPC ID based on the Name tag
 data "aws_vpc" "selected" {
   filter {
     name   = "tag:Name"
-    values = ["${var.env}-vpc"]
+    values = [local.vpc_name]
   }
 }
 # retrieve all the subnets ID associated with the selected VPC
 data "aws_subnets" "all_subnets" {
   filter {
-    name   = "${var.env}-vpc"
+    name   = local.vpc_name
     values = [data.aws_vpc.selected.id]
   }
 }
@@ -20,7 +31,7 @@ data "aws_subnets" "data" {
   }
 
   filter {
-    name   = "${var.env}-vpc"
+    name   = local.vpc_name 
     values = [data.aws_vpc.selected.id]
   }
 }
@@ -33,10 +44,16 @@ data "aws_subnets" "be" {
   }
 
   filter {
-    name   = "${var.env}-vpc"
+    name   = local.vpc_name
     values = [data.aws_vpc.selected.id]
   }
 }
+# retrieve the subnets CIDRs that need access to the database
+data "aws_subnet" "be_cidr_map" {
+  for_each = toset(data.aws_subnets.be.ids)
+  id       = each.key
+}
+
 
 # Security Group for Aurora MySQL
 module "aurora_sg" {
@@ -51,7 +68,7 @@ module "aurora_sg" {
         from_port   = 3306
         to_port     = 3306
         protocol    = "tcp"
-        cidr_blocks = [data.aws_subnets.be.cidr_blocks]  # verificare se ritorna errore o lista dal data!
+        cidr_blocks = local.be_subnet_cidrs
     }
   ]
 
