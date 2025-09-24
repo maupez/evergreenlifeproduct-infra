@@ -67,3 +67,15 @@ variable "master_password" {
   type      = string
   sensitive = true
 }
+
+
+variable "sg_ingress_rules" {
+  type = list(object({
+    description = string
+    from_port   = number
+    to_port     = number
+    protocol    = string
+    cidr_blocks = list(string)
+  }))
+  default = []
+}
