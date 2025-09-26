@@ -48,8 +48,18 @@ variable "instance_type" {
   default     = "db.r6g.small"
 }
 
+variable "instanceCount" {
+  description = "The number of instances in the cluster"
+  type        = number
+  default     = 1
+}
+
 variable "subnet_ids" {
   type = list(string)
+}
+
+variable "availability_zones" {
+  type = list(string)     
 }
 
 variable "database_name" {
@@ -78,4 +88,15 @@ variable "sg_ingress_rules" {
     cidr_blocks = list(string)
   }))
   default = []
+}
+variable "preferred_backup_window" {
+  description = "The daily time range during which automated backups are created if automated backups are enabled"
+  type        = string
+  default     = "04:00-05:00"
+}
+
+variable "isServerless" {
+  description = "Boolean to set the instance type to serverless"
+  type        = bool
+  default     = true
 }
