@@ -1,5 +1,17 @@
 # evergreenlifeproduct-infra
 
+# Source Instances
+MariaDB - red.mariadb-evergree-3-aws - 172.16.9.13 - c5.2xlarge
+
+Server Web - red-app-evergreen-aws 172.16.9.59 - c5.xlarge
+
+eWallet - red-app2-evergreen-aws 172.16.9.17 - c5.large
+
+FileSystem - red-fs-evergreen-aws 172.16.9.25 - c5.large
+
+PowerBI (win) - red-bi-evergreen-aws 172.16.9.16
+
+
 # List of resources
 
 - Networking:
