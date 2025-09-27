@@ -15,6 +15,8 @@ PowerBI (win) - red-bi-evergreen-aws 172.16.9.16
 # List of resources
 
 - Networking:
+
+  vpc_id = "vpc-050930db19799d22d"
   
   internet_gateway_id = "igw-02fdaf22a321e0d4f"
 
@@ -36,4 +38,16 @@ PowerBI (win) - red-bi-evergreen-aws 172.16.9.16
   
   }
 
-  vpc_id = "vpc-050930db19799d22d"
+- Database:
+
+  aurora_endpoint = "prd-evergreenlifeproduct-cluster.cluster-c9cwmoyw6zhe.eu-south-1.rds.amazonaws.com"
+  
+  aurora_reader_endpoint = "prd-evergreenlifeproduct-cluster.cluster-ro-c9cwmoyw6zhe.eu-south-1.rds.amazonaws.com"
+  
+  data_subnet_ids = tolist([
+    
+    "subnet-07ad8a661fc359cdf",
+    
+    "subnet-00ae8a256718648db",
+
+  ])
