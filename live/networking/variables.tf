@@ -45,9 +45,9 @@ variable "vpc_cidr_block" {
 
 variable "subnet_cidr_blocks" {
   type = list(object({
-    name        = string
-    cidr_block  = string
-    public      = bool
+    name       = string
+    cidr_block = string
+    public     = bool
   }))
   description = "List of subnet definitions with name, CIDR block, public flag, and environment tag."
 
@@ -61,4 +61,10 @@ variable "subnet_cidr_blocks" {
   #   ])
   #   error_message = "Each subnet must be a valid IPv4 CIDR with a /24 or smaller netmask and must be inside the VPC block."
   # }
+}
+
+variable "allowed_ip_addresses" {
+  description = "List of allowed IP addresses or CIDR blocks for SSH access"
+  type        = list(string)
+  default     = []
 }

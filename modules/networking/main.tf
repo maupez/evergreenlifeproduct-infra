@@ -49,8 +49,7 @@ resource "aws_subnet" "subnets" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = each.value.cidr_block
   map_public_ip_on_launch = each.value.public
-  availability_zone       = data.aws_availability_zones.available.names[0]
-
+  availability_zone       = each.value.az != null ? each.value.az : data.aws_availability_zones.available.names[0]
   tags = merge(var.tags, {
     Name        = "${var.env}-${each.value.name}"
     Environment = var.environment

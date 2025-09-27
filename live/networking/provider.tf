@@ -7,10 +7,10 @@ terraform {
     }
   }
   backend "s3" {
-    bucket      = "evergreenlife-tofu-remote-state"
-    key         = "opentofu/states/networking-dev.tfstate"
-    region      = var.aws_region
-    encrypt     = true
+    bucket  = "evergreenlife-tofu-remote-state"
+    key     = "opentofu/states/networking-dev.tfstate"
+    region  = var.aws_region
+    encrypt = true
   }
 }
 
