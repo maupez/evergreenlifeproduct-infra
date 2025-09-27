@@ -54,9 +54,9 @@ variable "instanceCount" {
   default     = 1
 }
 
-variable "subnet_ids" {
-  type = list(string)
-}
+# variable "subnet_ids" {
+#   type = list(string)
+# }
 
 variable "availability_zones" {
   type = list(string)     
