@@ -9,8 +9,8 @@
 
 
 2025 09 24
-+ add codice per creare security groups (per db e macchine)
-+ aggiungere data blocks per subnet e vpc alla live di aurora (vedi copilot)
+0 add codice per creare security groups (per db e macchine)
+1 aggiungere data blocks per subnet e vpc alla live di aurora (vedi copilot)
 + farsi dare info da pacifici sul db (versione, master user, db name default, ecc)
 + nuovo rds aurora serverless vuoto (tabelle e dati saranno da importare successivamente)
 + nuova ec2 linux con openvpn client
