@@ -51,6 +51,12 @@ variable "preferred_backup_window" {
   description = "The daily time range during which automated backups are created if automated backups are enabled"
   type        = string
 }
+
+variable "performance_insights_enabled" {
+  type    = bool
+  default = false
+}
+
 variable "tags" {
   type    = map(string)
   default = {}

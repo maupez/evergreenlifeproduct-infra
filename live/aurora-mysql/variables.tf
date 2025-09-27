@@ -78,7 +78,6 @@ variable "master_password" {
   sensitive = true
 }
 
-
 variable "sg_ingress_rules" {
   type = list(object({
     description = string
@@ -89,12 +88,18 @@ variable "sg_ingress_rules" {
   }))
   default = []
 }
+
 variable "preferred_backup_window" {
   description = "The daily time range during which automated backups are created if automated backups are enabled"
   type        = string
   default     = "04:00-05:00"
 }
 
+variable "performance_insights_enabled" {
+  description = "Enable Performance Insights for the RDS instances"
+  type        = bool
+  default     = false
+}
 variable "isServerless" {
   description = "Boolean to set the instance type to serverless"
   type        = bool

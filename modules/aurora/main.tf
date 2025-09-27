@@ -16,15 +16,17 @@ resource "aws_rds_cluster" "aurora" {
 }
 
 resource "aws_rds_cluster_instance" "aurora_instances" {
-  count                   = var.instanceCount
-  identifier              = "${var.cluster_identifier}-instance-${count.index}"
-  cluster_identifier      = aws_rds_cluster.aurora.id
-  instance_class          = var.instance_class
-  engine                  = aws_rds_cluster.aurora.engine
-  engine_version          = aws_rds_cluster.aurora.engine_version
-  db_subnet_group_name    = aws_db_subnet_group.aurora.name
-  publicly_accessible     = false
-  tags                    = var.tags
+  count                                 = var.instanceCount
+  identifier                            = "${var.cluster_identifier}-instance-${count.index}"
+  cluster_identifier                    = aws_rds_cluster.aurora.id
+  instance_class                        = var.instance_class
+  engine                                = aws_rds_cluster.aurora.engine
+  engine_version                        = aws_rds_cluster.aurora.engine_version
+  db_subnet_group_name                  = aws_db_subnet_group.aurora.name
+  publicly_accessible                   = false
+  performance_insights_enabled          = var.performance_insights_enabled
+  performance_insights_retention_period = 7
+  tags                                  = var.tags
 }
 
 resource "aws_db_subnet_group" "aurora" {

@@ -74,20 +74,20 @@ module "aurora_sg" {
 
 # Aurora MySQL Cluster
 module "aurora_mysql" {
-  source                  = "../../modules/aurora"
-  cluster_identifier      = "${var.env}-${var.cluster_name}-cluster"
-  engine_version          = var.engine_version
-  availability_zones      = var.availability_zones
-  backup_retention_period = 1
-  preferred_backup_window = var.preferred_backup_window
-  instance_class          = var.isServerless ? "db.serverless" : var.instance_type
-  instanceCount           = var.instanceCount
-  subnet_ids              = data.aws_subnets.data.ids
-  # subnet_ids              = ["subnet-056ed236fde0bbb6b"]
-  vpc_security_group_ids = [module.aurora_sg.security_group_id]
-  database_name          = var.database_name
-  master_username        = var.master_username
-  master_password        = var.master_password
+  source                       = "../../modules/aurora"
+  cluster_identifier           = "${var.env}-${var.cluster_name}-cluster"
+  engine_version               = var.engine_version
+  availability_zones           = var.availability_zones
+  backup_retention_period      = 1
+  preferred_backup_window      = var.preferred_backup_window
+  instance_class               = var.isServerless ? "db.serverless" : var.instance_type
+  instanceCount                = var.instanceCount
+  subnet_ids                   = data.aws_subnets.data.ids
+  vpc_security_group_ids       = [module.aurora_sg.security_group_id]
+  database_name                = var.database_name
+  master_username              = var.master_username
+  master_password              = var.master_password
+  performance_insights_enabled = var.performance_insights_enabled
   tags = {
     Environment = var.environment
     Project     = var.project
