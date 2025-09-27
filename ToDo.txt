@@ -8,11 +8,10 @@
 + rotte per andare dalla vpc all'account extrared via vpn client 
 
 
-2025 09 24
-0 add codice per creare security groups (per db e macchine)
-1 aggiungere data blocks per subnet e vpc alla live di aurora (vedi copilot)
-+ farsi dare info da pacifici sul db (versione, master user, db name default, ecc)
-+ nuovo rds aurora serverless vuoto (tabelle e dati saranno da importare successivamente)
-+ nuova ec2 linux con openvpn client
+2025 09 28
+. aggiungere data blocks per subnet e vpc alla live di aurora 
+. farsi dare info da pacifici sul db (versione, master user, db name default, ecc)
+. nuovo rds aurora serverless vuoto (tabelle e dati saranno da importare successivamente) con security group
++ nuova ec2 linux con openvpn client con security group
 + rotte per andare dalla vpc all'account extrared via vpn client 
 
