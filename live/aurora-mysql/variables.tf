@@ -59,7 +59,7 @@ variable "instanceCount" {
 # }
 
 variable "availability_zones" {
-  type = list(string)     
+  type = list(string)
 }
 
 variable "database_name" {

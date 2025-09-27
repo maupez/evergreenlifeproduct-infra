@@ -12,6 +12,7 @@ resource "aws_rds_cluster" "aurora" {
   tags                    = var.tags
   backup_retention_period = var.backup_retention_period
   preferred_backup_window = var.preferred_backup_window
+  enabled_cloudwatch_logs_exports = ["audit", "error", "general", "slowquery"]
 }
 
 resource "aws_rds_cluster_instance" "aurora_instances" {

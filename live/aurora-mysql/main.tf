@@ -4,9 +4,8 @@ locals {
   # cidr blocks of the subnets that need access to the database
   be_subnet_cidrs = [
     for subnet in data.aws_subnet.be_cidr_map :
-      subnet.cidr_block
+    subnet.cidr_block
   ]
-
 }
 
 # retrieve the VPC ID based on the Name tag
@@ -21,7 +20,7 @@ data "aws_vpc" "selected" {
 data "aws_subnets" "data" {
   filter {
     name   = "tag:Name"
-    values = ["data-subnet"]
+    values = ["${var.env}-data-subnet-a", "${var.env}-data-subnet-b"]
   }
 }
 
@@ -48,21 +47,21 @@ module "aurora_sg" {
 
   ingress_rules = [
     {
-        description = "Allow MySQL from BE servers"
-        from_port   = 3306
-        to_port     = 3306
-        protocol    = "tcp"
-        cidr_blocks = local.be_subnet_cidrs
+      description = "Allow MySQL from BE servers"
+      from_port   = 3306
+      to_port     = 3306
+      protocol    = "tcp"
+      cidr_blocks = local.be_subnet_cidrs
     }
   ]
 
   egress_rules = [
     {
-        description = "Allow all outbound traffic"
-        from_port   = 0
-        to_port     = 0
-        protocol    = "-1"
-        cidr_blocks = ["0.0.0.0/0"]
+      description = "Allow all outbound traffic"
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+      cidr_blocks = ["0.0.0.0/0"]
     }
   ]
 
@@ -80,15 +79,15 @@ module "aurora_mysql" {
   engine_version          = var.engine_version
   availability_zones      = var.availability_zones
   backup_retention_period = 1
-  preferred_backup_window = var.preferred_backup_window 
+  preferred_backup_window = var.preferred_backup_window
   instance_class          = var.isServerless ? "db.serverless" : var.instance_type
   instanceCount           = var.instanceCount
-  # subnet_ids              = data.aws_subnets.data.ids
-  subnet_ids              = ["subnet-056ed236fde0bbb6b"]
-  vpc_security_group_ids  = [module.aurora_sg.security_group_id]
-  database_name           = var.database_name
-  master_username         = var.master_username
-  master_password         = var.master_password
+  subnet_ids              = data.aws_subnets.data.ids
+  # subnet_ids              = ["subnet-056ed236fde0bbb6b"]
+  vpc_security_group_ids = [module.aurora_sg.security_group_id]
+  database_name          = var.database_name
+  master_username        = var.master_username
+  master_password        = var.master_password
   tags = {
     Environment = var.environment
     Project     = var.project
