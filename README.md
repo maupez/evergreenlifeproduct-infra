@@ -28,7 +28,9 @@ PowerBI (win) - red-bi-evergreen-aws 172.16.9.16
   
     "be-subnet-1" = "subnet-075832e49941e5d28" (BE: +eWallet, +FileSystem, +FE_se_ALB, +POWERBI_se_connessione_via_vpn?)
   
-    "data-subnet" = "subnet-056ed236fde0bbb6b" (DATA: +AuroraMySQL, +POWERBI_se_connessione_via_vpn)
+    "data-subnet-a" = "subnet-040c8782872e4d9d2" (DATA: +AuroraMySQL, +POWERBI_se_connessione_via_vpn)
+
+    "data-subnet-b" = "subnet-040c8782872e4d9d2" (DATA: +AuroraMySQL)
   
     "vpn-client-subnet" = "subnet-0f26e9e7be69c856f" (VPN CLIENT SERVER per migrazione db)
   
