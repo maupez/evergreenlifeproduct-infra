@@ -48,6 +48,7 @@ variable "subnet_cidr_blocks" {
     name       = string
     cidr_block = string
     public     = bool
+    az         = optional(string)
   }))
   description = "List of subnet definitions with name, CIDR block, public flag, and environment tag."
 
