@@ -25,6 +25,8 @@ PowerBI (win) - red-bi-evergreen-aws 172.16.9.16
   subnet_ids = {
 
     "fe-subnet-1" = "subnet-0ade20a2e15d4dc48" (NATGW, +ALB, +SERVER VPN, +POWERBI?)
+
+    "fe-subnet-b" = "subnet-0e124db20dcd926a5" (+ALB)
   
     "migration-subnet" = "subnet-0dab4967017a956e8" (EC2 MIGRATION RESOURCES & VMs)
   

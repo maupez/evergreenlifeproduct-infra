@@ -46,7 +46,13 @@ subnet_cidr_blocks = [
     name       = "vpn-client-subnet"
     cidr_block = "172.16.200.0/24"
     public     = true
-  }
+  },
+  {
+    name       = "fe-subnet-b"
+    cidr_block = "172.16.11.0/24"
+    public     = false
+    az         = "eu-south-1b"
+  },
 ]
 
 allowed_ip_addresses = ["151.31.197.31/31"]
